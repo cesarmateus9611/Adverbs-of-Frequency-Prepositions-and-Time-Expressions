@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adverbs of Frequency, Prepositions and Time Expressions</title>
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS & RESET
+═══════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink:     #0e0e1a;
+  --indigo:  #1a1a3e;
+  --deep:    #12122a;
+  --mid:     #2a2a5a;
+  --muted:   #6b6b9a;
+  --light:   #9898b8;
+  --border:  #2e2e5e;
+  --card:    #181830;
+  --card2:   #1e1e40;
+  --white:   #f0f0fa;
+  --off:     #e8e8f5;
+
+  --green:   #00e676;
+  --green2:  #00c853;
+  --green3:  #b9f6ca;
+  --amber:   #ffd740;
+  --amber2:  #ffab00;
+  --rose:    #ff5252;
+  --rose2:   #ff1744;
+  --sky:     #40c4ff;
+  --lavender:#b388ff;
+
+  --grad: linear-gradient(135deg, var(--indigo) 0%, var(--deep) 100%);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--deep);
+  color: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+/* ═══════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════ */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(14,14,26,.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  display: flex; align-items: center; gap: 8px;
+  min-height: 54px;
+  overflow-x: auto;
+}
+nav::-webkit-scrollbar { height: 0; }
+.nav-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px; color: var(--green);
+  white-space: nowrap; margin-right: 8px;
+  flex-shrink: 0;
+}
+.nav-brand span { color: var(--amber); font-style: italic; }
+.nav-tab {
+  background: none; border: none; cursor: pointer;
+  color: var(--light); font-size: 12px; font-weight: 600;
+  font-family: 'DM Mono', monospace;
+  padding: 8px 14px; border-radius: 6px; white-space: nowrap;
+  transition: all .18s; letter-spacing: .03em;
+  flex-shrink: 0;
+}
+.nav-tab:hover { color: var(--white); background: var(--border); }
+.nav-tab.active { color: var(--ink); background: var(--green); }
+.nav-credit {
+  margin-left: auto; font-size: 11px; color: var(--muted);
+  white-space: nowrap; flex-shrink: 0;
+  font-family: 'DM Mono', monospace;
+}
+.nav-credit b { color: var(--green); }
+
+/* ═══════════════════════════════════════════════
+   PAGES
+═══════════════════════════════════════════════ */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero {
+  padding: 56px 24px 40px;
+  max-width: 900px; margin: 0 auto;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse at top, rgba(0,230,118,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; font-weight: 500; letter-spacing: .12em;
+  color: var(--green); text-transform: uppercase; margin-bottom: 14px;
+}
+.hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 5vw, 52px);
+  line-height: 1.1; color: var(--white);
+  margin-bottom: 16px;
+}
+.hero-title .hl  { color: var(--green); }
+.hero-title .hl2 { color: var(--amber); font-style: italic; }
+.hero-sub {
+  font-size: 15px; color: var(--light); max-width: 560px;
+  margin-bottom: 24px;
+}
+.hero-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; font-weight: 500; padding: 5px 12px;
+  border-radius: 20px; border: 1px solid;
+}
+.chip-g  { border-color: var(--green);   color: var(--green);   background: rgba(0,230,118,.07); }
+.chip-a  { border-color: var(--amber);   color: var(--amber);   background: rgba(255,215,64,.07); }
+.chip-s  { border-color: var(--sky);     color: var(--sky);     background: rgba(64,196,255,.07); }
+.chip-l  { border-color: var(--lavender);color: var(--lavender);background: rgba(179,136,255,.07);}
+
+/* ═══════════════════════════════════════════════
+   CONTAINER & SECTIONS
+═══════════════════════════════════════════════ */
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px 60px; }
+.section { margin-bottom: 40px; }
+.sec-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500; letter-spacing: .14em;
+  color: var(--green); text-transform: uppercase; margin-bottom: 10px;
+}
+.sec-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px; color: var(--white); margin-bottom: 14px;
+}
+.sec-intro { font-size: 14px; color: var(--light); margin-bottom: 18px; }
+.divider {
+  height: 1px; background: var(--border);
+  margin: 36px 0;
+}
+
+/* ═══════════════════════════════════════════════
+   GRAMMAR CARDS
+═══════════════════════════════════════════════ */
+.gram-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 24px 26px;
+  margin-bottom: 16px;
+}
+.gram-card-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; font-weight: 500; letter-spacing: .08em;
+  color: var(--amber); text-transform: uppercase; margin-bottom: 12px;
+}
+.gram-rule {
+  background: rgba(0,230,118,.06); border-left: 3px solid var(--green);
+  border-radius: 0 10px 10px 0; padding: 12px 16px;
+  font-size: 14px; color: var(--off); margin-bottom: 14px;
+  font-family: 'DM Mono', monospace;
+}
+.gram-rule b { color: var(--green); }
+
+/* Frequency bar */
+.freq-bar {
+  background: var(--card2); border-radius: 12px; padding: 20px 22px;
+  margin-bottom: 16px;
+}
+.freq-bar-title {
+  font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace;
+  letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px;
+}
+.freq-track {
+  position: relative; height: 8px;
+  background: linear-gradient(90deg, var(--rose) 0%, var(--amber) 40%, var(--green) 100%);
+  border-radius: 4px; margin-bottom: 18px;
+}
+.freq-labels {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: var(--muted); margin-bottom: 6px;
+  font-family: 'DM Mono', monospace;
+}
+.freq-words {
+  display: flex; justify-content: space-between;
+  flex-wrap: nowrap; gap: 2px;
+}
+.freq-word {
+  font-size: 12px; font-weight: 600; text-align: center;
+  padding: 5px 8px; border-radius: 6px; flex: 1;
+  font-family: 'DM Mono', monospace; white-space: nowrap;
+}
+.fw-0  { background: rgba(255,82,82,.15);  color: var(--rose);   border: 1px solid rgba(255,82,82,.3); }
+.fw-10 { background: rgba(255,82,82,.1);   color: #ff8a65;       border: 1px solid rgba(255,82,82,.2); }
+.fw-25 { background: rgba(255,171,0,.1);   color: var(--amber2); border: 1px solid rgba(255,171,0,.2); }
+.fw-50 { background: rgba(255,215,64,.12); color: var(--amber);  border: 1px solid rgba(255,215,64,.25);}
+.fw-60 { background: rgba(255,215,64,.15); color: #ffcc02;       border: 1px solid rgba(255,215,64,.3); }
+.fw-70 { background: rgba(0,200,83,.1);    color: #69f0ae;       border: 1px solid rgba(0,200,83,.2); }
+.fw-80 { background: rgba(0,200,83,.13);   color: #00e676;       border: 1px solid rgba(0,200,83,.25);}
+.fw-90 { background: rgba(0,200,83,.17);   color: var(--green);  border: 1px solid rgba(0,200,83,.35);}
+.fw-100{ background: rgba(0,200,83,.22);   color: var(--green2); border: 1px solid var(--green2); }
+
+/* Preposition table */
+.prep-grid {
+  display: grid; grid-template-columns: 80px 1fr; gap: 0;
+  border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+}
+.prep-header {
+  background: var(--mid); padding: 10px 16px;
+  font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500;
+  color: var(--white); text-align: center; border-bottom: 1px solid var(--border);
+}
+.prep-header.key { color: var(--green); }
+.prep-row { display: contents; }
+.prep-key {
+  background: var(--card2); padding: 14px 16px;
+  font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 500;
+  color: var(--green); text-align: center;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.prep-vals {
+  background: var(--card); padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+}
+.prep-tag {
+  display: inline-block; padding: 3px 10px; border-radius: 6px;
+  font-size: 12px; font-weight: 500;
+  font-family: 'DM Mono', monospace;
+}
+.pt-in  { background: rgba(64,196,255,.12); color: var(--sky);     border: 1px solid rgba(64,196,255,.25); }
+.pt-on  { background: rgba(179,136,255,.12);color: var(--lavender);border: 1px solid rgba(179,136,255,.25);}
+.pt-at  { background: rgba(255,215,64,.12); color: var(--amber);   border: 1px solid rgba(255,215,64,.25); }
+.pt-ex  { font-size: 11px; color: var(--muted); font-style: italic; padding: 3px 0; border: none; background: none; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+/* Every/once box */
+.expr-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px;
+}
+.expr-card {
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px;
+}
+.expr-card b {
+  display: block; font-family: 'DM Mono', monospace; font-size: 13px;
+  color: var(--sky); margin-bottom: 4px;
+}
+.expr-card span { font-size: 12px; color: var(--light); }
+
+/* Position rule box */
+.pos-box {
+  border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 14px;
+}
+.pos-box-head {
+  background: var(--mid); padding: 10px 16px;
+  font-size: 12px; font-weight: 700; color: var(--amber);
+  font-family: 'DM Mono', monospace; letter-spacing: .06em; text-transform: uppercase;
+}
+.pos-row {
+  padding: 12px 16px; border-top: 1px solid var(--border);
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--card);
+}
+.pos-row:nth-child(odd) { background: var(--card2); }
+.pos-badge {
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--green); color: var(--ink);
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+}
+.pos-row-content { flex: 1; }
+.pos-rule { font-size: 13px; color: var(--white); font-weight: 600; margin-bottom: 4px; }
+.pos-example { font-size: 12px; color: var(--light); font-style: italic; }
+.pos-example b { color: var(--amber); font-style: normal; }
+
+/* ═══════════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════════ */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 8px; border: none;
+  font-size: 13px; font-weight: 700; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: all .18s; letter-spacing: .01em;
+}
+.btn-green { background: var(--green); color: var(--ink); }
+.btn-green:hover { background: var(--green2); transform: translateY(-1px); }
+.btn-amber { background: var(--amber); color: var(--ink); }
+.btn-amber:hover { background: var(--amber2); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent; color: var(--light);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { color: var(--white); border-color: var(--muted); }
+.btn-sky { background: var(--sky); color: var(--ink); }
+.btn-sky:hover { background: #29b6f6; transform: translateY(-1px); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+/* ═══════════════════════════════════════════════
+   SCALE EXERCISE
+═══════════════════════════════════════════════ */
+.scale-track {
+  position: relative; margin: 30px 0 12px;
+  height: 10px;
+  background: linear-gradient(90deg, var(--rose) 0%, var(--amber) 40%, var(--green) 100%);
+  border-radius: 5px;
+}
+.scale-labels {
+  display: flex; justify-content: space-between;
+  font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted);
+  margin-bottom: 20px;
+}
+.scale-slots {
+  display: flex; justify-content: space-around; gap: 6px;
+  margin-bottom: 28px; flex-wrap: wrap;
+}
+.scale-slot {
+  min-width: 90px; min-height: 48px; border-radius: 10px;
+  border: 2px dashed var(--border); background: var(--card2);
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 8px 4px; flex: 1;
+  transition: border-color .2s, background .2s;
+  position: relative;
+}
+.scale-slot.drag-over { border-color: var(--green); background: rgba(0,230,118,.08); }
+.scale-slot.filled    { border-style: solid; }
+.scale-slot.correct   { border-color: var(--green2) !important; background: rgba(0,200,83,.1) !important; }
+.scale-slot.wrong     { border-color: var(--rose)   !important; background: rgba(255,82,82,.1) !important; }
+.slot-pct {
+  font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted);
+  margin-bottom: 4px;
+}
+.slot-word {
+  font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 600;
+  color: var(--white); text-align: center;
+}
+.slot-fb { font-size: 10px; margin-top: 3px; }
+
+.scale-bank {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; min-height: 64px;
+  margin-bottom: 18px;
+}
+.scale-pill {
+  font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600;
+  padding: 8px 16px; border-radius: 20px; cursor: grab;
+  border: 1px solid var(--border); background: var(--mid);
+  color: var(--white); user-select: none; transition: all .15s;
+}
+.scale-pill:hover { background: var(--muted); transform: scale(1.04); }
+.scale-pill.dragging { opacity: .45; }
+.scale-pill.placed   { opacity: .3; cursor: default; pointer-events: none; }
+.scale-pill.selected { border-color: var(--amber); background: rgba(255,215,64,.15); color: var(--amber); }
+
+/* ═══════════════════════════════════════════════
+   SENTENCE ORDER EXERCISE
+═══════════════════════════════════════════════ */
+.order-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 20px; margin-bottom: 12px;
+}
+.order-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--green); margin-bottom: 10px; }
+.word-bank {
+  display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; min-height: 40px;
+}
+.word-drop {
+  display: flex; flex-wrap: wrap; gap: 7px; min-height: 44px;
+  border: 2px dashed var(--border); border-radius: 10px; padding: 8px 10px;
+  background: var(--card2); margin-bottom: 10px;
+  transition: border-color .2s;
+}
+.word-drop.drag-over { border-color: var(--green); }
+.word-token {
+  font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500;
+  padding: 6px 12px; border-radius: 8px; cursor: grab;
+  background: var(--mid); color: var(--white);
+  border: 1px solid var(--border); user-select: none;
+  transition: all .15s;
+}
+.word-token:hover { background: var(--muted); }
+.word-token.in-drop { cursor: grab; }
+.word-token.adverb  { border-color: var(--amber); color: var(--amber); background: rgba(255,215,64,.1); }
+.order-fb {
+  font-size: 12px; padding: 8px 12px; border-radius: 8px;
+  display: none; margin-top: 6px;
+}
+.order-fb.show { display: block; }
+.order-fb.ok  { background: rgba(0,200,83,.1); border: 1px solid rgba(0,200,83,.3); color: #69f0ae; }
+.order-fb.bad { background: rgba(255,82,82,.1); border: 1px solid rgba(255,82,82,.3); color: #ff8a80; }
+
+/* ═══════════════════════════════════════════════
+   PREPOSITION MATCH EXERCISE
+═══════════════════════════════════════════════ */
+.match-cols {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+  margin-bottom: 20px;
+}
+@media(max-width:600px){ .match-cols { grid-template-columns: 1fr; } }
+.match-col {
+  border: 2px dashed var(--border); border-radius: 14px;
+  padding: 14px; min-height: 140px; background: var(--card2);
+  transition: border-color .2s, background .2s;
+}
+.match-col.drag-over { border-color: var(--green); background: rgba(0,230,118,.06); }
+.match-col-head {
+  font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 500;
+  text-align: center; margin-bottom: 10px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.col-in  .match-col-head { color: var(--sky); }
+.col-on  .match-col-head { color: var(--lavender); }
+.col-at  .match-col-head { color: var(--amber); }
+.match-items { display: flex; flex-direction: column; gap: 6px; }
+.match-chip {
+  font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 600;
+  padding: 7px 12px; border-radius: 8px; cursor: grab;
+  background: var(--mid); color: var(--white);
+  border: 1px solid var(--border); user-select: none;
+  text-align: center; transition: all .15s;
+}
+.match-chip:hover { background: var(--muted); }
+.match-chip.correct { border-color: var(--green2); background: rgba(0,200,83,.15); color: #69f0ae; }
+.match-chip.wrong   { border-color: var(--rose);   background: rgba(255,82,82,.15); color: #ff8a80; }
+.match-bank {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 14px; min-height: 58px; margin-bottom: 18px;
+}
+
+/* ═══════════════════════════════════════════════
+   FILL-IN EXERCISE
+═══════════════════════════════════════════════ */
+.fill-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 22px; margin-bottom: 10px;
+}
+.fill-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); margin-bottom: 10px; }
+.fill-sentence { font-size: 15px; color: var(--white); margin-bottom: 10px; line-height: 2; }
+.fill-opts { display: flex; flex-wrap: wrap; gap: 7px; }
+.fill-opt {
+  font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 600;
+  padding: 6px 14px; border-radius: 20px; cursor: pointer;
+  background: var(--card2); color: var(--light);
+  border: 1.5px solid var(--border); transition: all .18s;
+}
+.fill-opt:hover:not(.locked) { border-color: var(--sky); color: var(--sky); }
+.fill-opt.selected { border-color: var(--amber); color: var(--amber); background: rgba(255,215,64,.08); }
+.fill-opt.correct  { border-color: var(--green2); color: #69f0ae; background: rgba(0,200,83,.1); }
+.fill-opt.wrong    { border-color: var(--rose);   color: #ff8a80; background: rgba(255,82,82,.1); }
+.fill-opt.locked   { cursor: default; }
+.fill-fb { font-size: 12px; margin-top: 10px; padding: 8px 12px; border-radius: 8px; display: none; }
+.fill-fb.show { display: block; }
+.fill-fb.ok  { background: rgba(0,200,83,.1);  border: 1px solid rgba(0,200,83,.3);  color: #69f0ae; }
+.fill-fb.bad { background: rgba(255,82,82,.1); border: 1px solid rgba(255,82,82,.3); color: #ff8a80; }
+
+/* ═══════════════════════════════════════════════
+   QUIZ
+═══════════════════════════════════════════════ */
+.qz-progress { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 28px; }
+.qz-bar      { height: 100%; background: var(--green); border-radius: 2px; transition: width .4s; }
+.qz-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px 26px; }
+.qz-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+.qz-q  { font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 6px; line-height: 1.45; }
+.qz-sub{ font-size: 13px; color: var(--light); margin-bottom: 20px; }
+.qz-opts { display: flex; flex-direction: column; gap: 9px; }
+.qz-opt {
+  background: var(--card2); border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; cursor: pointer;
+  font-size: 14px; color: var(--white); text-align: left;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: flex; align-items: center; gap: 12px;
+  transition: all .18s;
+}
+.qz-opt:hover:not(.locked) { border-color: var(--green); background: rgba(0,230,118,.05); }
+.qz-opt.selected { border-color: var(--amber); background: rgba(255,215,64,.07); }
+.qz-opt.correct  { border-color: var(--green2); background: rgba(0,200,83,.1); }
+.qz-opt.wrong    { border-color: var(--rose);   background: rgba(255,82,82,.1); }
+.qz-opt.locked   { cursor: default; }
+.qz-letter {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  border: 1.5px solid var(--border); display: flex; align-items: center;
+  justify-content: center; font-size: 12px; font-weight: 700;
+  font-family: 'DM Mono', monospace;
+}
+.qz-fb { font-size: 13px; margin-top: 14px; padding: 10px 14px; border-radius: 10px; display: none; }
+.qz-fb.show { display: block; }
+.qz-fb.ok  { background: rgba(0,200,83,.1);  border: 1px solid rgba(0,200,83,.3);  color: #69f0ae; }
+.qz-fb.bad { background: rgba(255,82,82,.1); border: 1px solid rgba(255,82,82,.3); color: #ff8a80; }
+
+/* Score screen */
+.score-screen { text-align: center; padding: 40px 20px; }
+.score-ring {
+  width: 130px; height: 130px; border-radius: 50%;
+  border: 4px solid var(--green); margin: 0 auto 24px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(0,230,118,.05);
+}
+.score-num { font-family: 'DM Serif Display', serif; font-size: 44px; color: var(--green); }
+.score-den { font-size: 14px; color: var(--muted); font-family: 'DM Mono', monospace; }
+.score-title { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--white); margin-bottom: 10px; }
+.score-msg   { font-size: 14px; color: var(--light); margin-bottom: 20px; }
+
+/* ═══════════════════════════════════════════════
+   TIP BOX
+═══════════════════════════════════════════════ */
+.tip-box {
+  background: rgba(0,230,118,.06); border: 1px solid rgba(0,230,118,.2);
+  border-radius: 12px; padding: 14px 16px;
+  display: flex; gap: 12px; align-items: flex-start;
+  margin-bottom: 18px; font-size: 13px; color: var(--off);
+}
+.tip-icon { font-size: 18px; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer {
+  text-align: center; padding: 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+footer b { color: var(--green); }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media(max-width:640px){
+  .nav-tab { font-size: 11px; padding: 7px 10px; }
+  .scale-slots { flex-direction: column; align-items: stretch; }
+  .scale-slot  { min-width: unset; flex-direction: row; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Freq<span>·</span>Time</div>
+  <button class="nav-tab active" onclick="showPage('p-grammar')">📖 Grammar</button>
+  <button class="nav-tab" onclick="showPage('p-scale')">🎚️ Scale</button>
+  <button class="nav-tab" onclick="showPage('p-order')">🔀 Sentence Order</button>
+  <button class="nav-tab" onclick="showPage('p-match')">🎯 Prepositions</button>
+  <button class="nav-tab" onclick="showPage('p-fill')">✏️ Fill In</button>
+  <button class="nav-tab" onclick="showPage('p-quiz')">📝 Quiz</button>
+  <div class="nav-credit">By <b>Cesar Peña</b> · Bilingual Teacher</div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     PAGE 1 · GRAMMAR
+══════════════════════════════════════ -->
+<div class="page active" id="p-grammar">
+  <div class="hero">
+    <p class="hero-tag">Unit · Grammar Reference</p>
+    <h1 class="hero-title">Adverbs of <span class="hl">Frequency</span>, <span class="hl2">Prepositions <br>&amp; Time Expressions</span></h1>
+    <p class="hero-sub">Learn how often things happen and when — with rules, examples, and everything you need to use them naturally.</p>
+    <div class="hero-chips">
+      <span class="chip chip-g">Always → Never</span>
+      <span class="chip chip-a">in / on / at</span>
+      <span class="chip chip-s">every · once · twice</span>
+      <span class="chip chip-l">Sentence Position</span>
+    </div>
+  </div>
+  <div class="container">
+
+    <!-- SECTION 1: ADVERBS OF FREQUENCY -->
+    <div class="section">
+      <div class="sec-label">Section 1 · Adverbs of Frequency</div>
+      <h2 class="sec-title">How <span class="hl">Often</span>?</h2>
+      <p class="sec-intro">Adverbs of frequency tell us how often an action happens. They answer the question <em>"How often do you…?"</em></p>
+
+      <div class="freq-bar">
+        <div class="freq-bar-title">Frequency Scale — 0% to 100%</div>
+        <div class="freq-labels"><span>0% — Never</span><span>50%</span><span>100% — Always</span></div>
+        <div class="freq-track"></div>
+        <div class="freq-words">
+          <div class="freq-word fw-0">never</div>
+          <div class="freq-word fw-10">rarely</div>
+          <div class="freq-word fw-25">seldom</div>
+          <div class="freq-word fw-50">sometimes</div>
+          <div class="freq-word fw-60">often</div>
+          <div class="freq-word fw-70">frequently</div>
+          <div class="freq-word fw-80">usually</div>
+          <div class="freq-word fw-90">almost always</div>
+          <div class="freq-word fw-100">always</div>
+        </div>
+      </div>
+
+      <div class="gram-card">
+        <div class="gram-card-title">📌 Adverb Details</div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border);">
+              <th style="text-align:left;padding:8px 10px;color:var(--green);font-family:'DM Mono',monospace;">Adverb</th>
+              <th style="text-align:center;padding:8px 10px;color:var(--amber);font-family:'DM Mono',monospace;">%</th>
+              <th style="text-align:left;padding:8px 10px;color:var(--sky);font-family:'DM Mono',monospace;">Example</th>
+            </tr>
+          </thead>
+          <tbody id="freq-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2: POSITION IN THE SENTENCE -->
+    <div class="section">
+      <div class="sec-label">Section 2 · Sentence Position</div>
+      <h2 class="sec-title">Where do they <span class="hl2">go</span>?</h2>
+      <p class="sec-intro">The position of an adverb of frequency depends on the verb. This is the most important grammar rule!</p>
+
+      <div class="pos-box">
+        <div class="pos-box-head">Position Rules</div>
+        <div class="pos-row">
+          <div class="pos-badge">1</div>
+          <div class="pos-row-content">
+            <div class="pos-rule">Before the main verb (action verbs)</div>
+            <div class="pos-example">I <b>always</b> have breakfast. · She <b>usually</b> wakes up late. · They <b>never</b> study on Sundays.</div>
+          </div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-badge">2</div>
+          <div class="pos-row-content">
+            <div class="pos-rule">After the verb <em>to be</em></div>
+            <div class="pos-example">He is <b>always</b> tired. · We are <b>often</b> late. · I am <b>never</b> bored in class.</div>
+          </div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-badge">3</div>
+          <div class="pos-row-content">
+            <div class="pos-rule">After auxiliary / modal verbs (can, do, does, will…)</div>
+            <div class="pos-example">She can <b>sometimes</b> help. · Do you <b>often</b> code at night?</div>
+          </div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-badge">4</div>
+          <div class="pos-row-content">
+            <div class="pos-rule"><em>Sometimes, usually, often, frequently</em> can also go at the start or end</div>
+            <div class="pos-example"><b>Sometimes</b> I go to the gym. · I go to the gym <b>sometimes</b>.</div>
+          </div>
+        </div>
+        <div class="pos-row">
+          <div class="pos-badge">⚠️</div>
+          <div class="pos-row-content">
+            <div class="pos-rule" style="color:var(--rose)">Never put a frequency adverb between the verb and its object</div>
+            <div class="pos-example" style="color:var(--rose)">❌ I eat always breakfast. · ❌ She watches usually TV.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3: PREPOSITIONS OF TIME -->
+    <div class="section">
+      <div class="sec-label">Section 3 · Prepositions of Time</div>
+      <h2 class="sec-title"><span class="hl">in</span> · <span class="hl2">on</span> · <span style="color:var(--sky)">at</span></h2>
+      <p class="sec-intro">These three prepositions tell us <em>when</em> something happens. Each one is used with specific types of time.</p>
+
+      <div class="prep-grid">
+        <div class="prep-header key">Prep.</div>
+        <div class="prep-header">Used with</div>
+
+        <div class="prep-key" style="color:var(--sky)">in</div>
+        <div class="prep-vals">
+          <span class="prep-tag pt-in">months</span>
+          <span class="prep-tag pt-in">years</span>
+          <span class="prep-tag pt-in">seasons</span>
+          <span class="prep-tag pt-in">decades</span>
+          <span class="prep-tag pt-in">centuries</span>
+          <span class="prep-tag pt-in">long periods</span>
+          <span class="prep-tag pt-in">parts of day*</span>
+          <span class="prep-tag pt-ex">in January · in 2026 · in summer · in the morning · in the afternoon · in the evening · in the 1990s</span>
+        </div>
+
+        <div class="prep-key" style="color:var(--lavender);border-top:1px solid var(--border)">on</div>
+        <div class="prep-vals" style="border-top:1px solid var(--border)">
+          <span class="prep-tag pt-on">days of the week</span>
+          <span class="prep-tag pt-on">dates</span>
+          <span class="prep-tag pt-on">specific days</span>
+          <span class="prep-tag pt-on">holidays</span>
+          <span class="prep-tag pt-ex">on Monday · on Friday evenings · on March 11th · on Christmas Day · on weekdays · on weekends</span>
+        </div>
+
+        <div class="prep-key" style="color:var(--amber);border-top:1px solid var(--border)">at</div>
+        <div class="prep-vals" style="border-top:1px solid var(--border)">
+          <span class="prep-tag pt-at">clock times</span>
+          <span class="prep-tag pt-at">precise moments</span>
+          <span class="prep-tag pt-at">meal times</span>
+          <span class="prep-tag pt-at">special periods</span>
+          <span class="prep-tag pt-ex">at 7 a.m. · at noon · at midnight · at night · at breakfast · at the weekend (British) · at Christmas (period)</span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);">* Exception: <em>at night</em> (not "in night") · <em>at noon / midnight</em></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 4: EVERY / ONCE / TWICE -->
+    <div class="section">
+      <div class="sec-label">Section 4 · Frequency Expressions</div>
+      <h2 class="sec-title">every · once · <span class="hl">twice</span> · per</h2>
+      <p class="sec-intro">These expressions go at the <strong style="color:var(--amber)">end of the sentence</strong> (not before the verb like adverbs).</p>
+
+      <div class="expr-grid">
+        <div class="expr-card"><b>every day</b><span>I study every day.</span></div>
+        <div class="expr-card"><b>every week</b><span>We meet every week.</span></div>
+        <div class="expr-card"><b>every month</b><span>They pay every month.</span></div>
+        <div class="expr-card"><b>every year</b><span>We travel every year.</span></div>
+        <div class="expr-card"><b>every morning</b><span>She runs every morning.</span></div>
+        <div class="expr-card"><b>every other day</b><span>I exercise every other day.</span></div>
+        <div class="expr-card"><b>once a week</b><span>I go to the gym once a week.</span></div>
+        <div class="expr-card"><b>twice a month</b><span>We have tests twice a month.</span></div>
+        <div class="expr-card"><b>three times a year</b><span>I visit family three times a year.</span></div>
+        <div class="expr-card"><b>four times a day</b><span>I check email four times a day.</span></div>
+        <div class="expr-card"><b>once in a while</b><span>I watch movies once in a while.</span></div>
+        <div class="expr-card"><b>from time to time</b><span>From time to time I cook.</span></div>
+        <div class="expr-card"><b>every now and then</b><span>Every now and then we hang out.</span></div>
+        <div class="expr-card"><b>once a year</b><span>They upgrade systems once a year.</span></div>
+        <div class="expr-card"><b>twice a week</b><span>I attend coding club twice a week.</span></div>
+        <div class="expr-card"><b>per day / per week</b><span>Three commits per day.</span></div>
+      </div>
+
+      <div class="gram-rule" style="margin-top:14px;">
+        <b>Position:</b> once/twice/every → end of sentence<br>
+        ✅ <em>I go to the gym <b>twice a week</b>.</em><br>
+        ❌ <em>I <b>twice a week</b> go to the gym.</em>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 5: QUESTIONS -->
+    <div class="section">
+      <div class="sec-label">Section 5 · Questions</div>
+      <h2 class="sec-title">How to <span class="hl2">ask</span>?</h2>
+      <div class="gram-card">
+        <div class="gram-card-title">📌 How often…?</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--off)">
+          <div>❓ <em><b>How often</b> do you exercise?</em> → <em>I exercise <b>twice a week</b>.</em></div>
+          <div>❓ <em><b>How often</b> does she check messages?</em> → <em>She <b>always</b> checks messages in the morning.</em></div>
+          <div>❓ <em><b>How often</b> do they go to the gym?</em> → <em>They go <b>once a month</b>.</em></div>
+          <div>❓ <em><b>When</b> do you study?</em> → <em>I study <b>in the evening</b>.</em></div>
+          <div>❓ <em><b>What time</b> do you wake up?</em> → <em>I wake up <b>at 6 a.m.</b></em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row" style="margin-top:10px;">
+      <button class="btn btn-green" onclick="showPage('p-scale')">Start Exercises 🎚️</button>
+    </div>
+
+  </div><!-- /container -->
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 2 · SCALE
+══════════════════════════════════════ -->
+<div class="page" id="p-scale">
+  <div class="hero">
+    <p class="hero-tag">Exercise 1 · Scale</p>
+    <h1 class="hero-title">🎚️ Frequency <span class="hl">Scale</span></h1>
+    <p class="hero-sub">Place each adverb in the correct position on the scale from <em>never</em> (0%) to <em>always</em> (100%). Click a word, then click a slot — or drag and drop.</p>
+  </div>
+  <div class="container">
+    <div class="section">
+      <div class="tip-box">
+        <div class="tip-icon">💡</div>
+        <div>Think about <strong>percentage</strong>: <em>always</em> = 100%, <em>never</em> = 0%, <em>sometimes</em> ≈ 50%. Some adverbs have flexible positions — the most commonly accepted value is used here.</div>
+      </div>
+
+      <div class="scale-track"></div>
+      <div class="scale-labels"><span>0% — Never</span><span>25%</span><span>50%</span><span>75%</span><span>100% — Always</span></div>
+      <div class="scale-slots" id="scale-slots"></div>
+
+      <div class="sec-label" style="margin-top:4px;">Word Bank</div>
+      <div class="scale-bank" id="scale-bank"></div>
+
+      <div class="btn-row">
+        <button class="btn btn-green" onclick="checkScale()">Check ✓</button>
+        <button class="btn btn-ghost" onclick="resetScale()">Reset 🔄</button>
+      </div>
+      <div id="scale-score" style="margin-top:14px;font-size:14px;font-weight:700;font-family:'DM Mono',monospace;"></div>
+    </div>
+
+    <div class="btn-row" style="margin-top:20px;">
+      <button class="btn btn-ghost" onclick="showPage('p-grammar')">← Grammar</button>
+      <button class="btn btn-green" onclick="showPage('p-order')">Sentence Order →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 3 · SENTENCE ORDER
+══════════════════════════════════════ -->
+<div class="page" id="p-order">
+  <div class="hero">
+    <p class="hero-tag">Exercise 2 · Sentence Order</p>
+    <h1 class="hero-title">🔀 Sentence <span class="hl2">Order</span></h1>
+    <p class="hero-sub">Drag or click the words to build the sentence in the correct order. Pay attention to where the adverb goes!</p>
+  </div>
+  <div class="container">
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <div>Remember: frequency adverbs go <strong>before the main verb</strong>, but <strong>after the verb to be</strong>. <em>Sometimes / often / usually</em> can also go at the start. <span style="color:var(--amber)">Yellow</span> words are adverbs — place them carefully!</div>
+    </div>
+
+    <div class="section">
+      <div class="sec-label">Exercise 2A — Before the Main Verb</div>
+      <h2 class="sec-title">Reorder the <span class="hl">Words</span></h2>
+      <div id="order-ex1"></div>
+      <div class="btn-row">
+        <button class="btn btn-green" onclick="checkOrder('ex1')">Check ✓</button>
+        <button class="btn btn-ghost" onclick="resetOrder('ex1')">Reset 🔄</button>
+      </div>
+      <div id="order-ex1-score" style="margin-top:12px;font-size:13px;font-weight:700;font-family:'DM Mono',monospace;"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="sec-label">Exercise 2B — After the Verb To Be</div>
+      <h2 class="sec-title">Reorder the <span class="hl2">Words</span></h2>
+      <div id="order-ex2"></div>
+      <div class="btn-row">
+        <button class="btn btn-amber" onclick="checkOrder('ex2')">Check ✓</button>
+        <button class="btn btn-ghost" onclick="resetOrder('ex2')">Reset 🔄</button>
+      </div>
+      <div id="order-ex2-score" style="margin-top:12px;font-size:13px;font-weight:700;font-family:'DM Mono',monospace;"></div>
+    </div>
+
+    <div class="btn-row" style="margin-top:20px;">
+      <button class="btn btn-ghost" onclick="showPage('p-scale')">← Scale</button>
+      <button class="btn btn-green" onclick="showPage('p-match')">Prepositions →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 4 · PREPOSITION MATCH
+══════════════════════════════════════ -->
+<div class="page" id="p-match">
+  <div class="hero">
+    <p class="hero-tag">Exercise 3 · Prepositions</p>
+    <h1 class="hero-title">🎯 Sort by <span class="hl">Preposition</span></h1>
+    <p class="hero-sub">Drag each time expression into the correct column: <span style="color:var(--sky)">in</span>, <span style="color:var(--lavender)">on</span>, or <span style="color:var(--amber)">at</span>. Three rounds — 18 expressions each.</p>
+  </div>
+  <div class="container">
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <div><strong style="color:var(--sky)">in</strong> → long periods (months, years, seasons, parts of day) &nbsp;|&nbsp; <strong style="color:var(--lavender)">on</strong> → days and dates &nbsp;|&nbsp; <strong style="color:var(--amber)">at</strong> → clock times and precise moments. Click a chip to select it, then click a column — or drag and drop.</div>
+    </div>
+
+    <!-- Round progress bar -->
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px;">
+      <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);white-space:nowrap;">Round</div>
+      <div style="display:flex;gap:8px;flex:1;">
+        <div id="mround-pip-0" style="flex:1;height:6px;border-radius:3px;background:var(--border);transition:background .3s;"></div>
+        <div id="mround-pip-1" style="flex:1;height:6px;border-radius:3px;background:var(--border);transition:background .3s;"></div>
+        <div id="mround-pip-2" style="flex:1;height:6px;border-radius:3px;background:var(--border);transition:background .3s;"></div>
+      </div>
+      <div id="mround-label" style="font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--green);white-space:nowrap;">1 / 3</div>
+    </div>
+
+    <div class="section">
+      <div class="sec-label" id="match-bank-label">Word Bank — Round 1</div>
+      <div class="match-bank" id="match-bank"></div>
+
+      <div class="match-cols">
+        <div class="match-col col-in" id="mcol-in" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="matchDrop(event,'in')" onclick="matchColClick('in')">
+          <div class="match-col-head">in</div>
+          <div class="match-items" id="mitems-in"></div>
+        </div>
+        <div class="match-col col-on" id="mcol-on" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="matchDrop(event,'on')" onclick="matchColClick('on')">
+          <div class="match-col-head">on</div>
+          <div class="match-items" id="mitems-on"></div>
+        </div>
+        <div class="match-col col-at" id="mcol-at" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="matchDrop(event,'at')" onclick="matchColClick('at')">
+          <div class="match-col-head">at</div>
+          <div class="match-items" id="mitems-at"></div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-sky"   onclick="checkMatch()">Check ✓</button>
+        <button class="btn btn-ghost" onclick="resetMatchRound()">Reset Round 🔄</button>
+        <button class="btn btn-ghost" onclick="resetMatchAll()">Restart All ↺</button>
+      </div>
+      <div id="match-score" style="margin-top:14px;font-size:14px;font-weight:700;font-family:'DM Mono',monospace;"></div>
+      <div id="match-next-btn" style="margin-top:14px;display:none;">
+        <button class="btn btn-green" id="match-next-inner" onclick="nextMatchRound()">Next Round →</button>
+      </div>
+      <!-- Running total across rounds -->
+      <div id="match-total" style="margin-top:10px;font-size:12px;font-family:'DM Mono',monospace;color:var(--muted);"></div>
+    </div>
+
+    <div class="btn-row" style="margin-top:20px;">
+      <button class="btn btn-ghost" onclick="showPage('p-order')">← Sentence Order</button>
+      <button class="btn btn-green" onclick="showPage('p-fill')">Fill In →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 5 · FILL IN
+══════════════════════════════════════ -->
+<div class="page" id="p-fill">
+  <div class="hero">
+    <p class="hero-tag">Exercise 4 · Fill In</p>
+    <h1 class="hero-title">✏️ Fill in the <span class="hl2">Blank</span></h1>
+    <p class="hero-sub">Choose the correct adverb of frequency or time expression to complete each sentence.</p>
+  </div>
+  <div class="container">
+    <div class="section">
+      <div class="sec-label">Exercise 4A — Adverbs of Frequency</div>
+      <h2 class="sec-title">Choose the <span class="hl">Right Word</span></h2>
+      <div id="fill-ex1"></div>
+      <div class="btn-row">
+        <button class="btn btn-green" onclick="checkFill('ex1')">Check ✓</button>
+        <button class="btn btn-ghost" onclick="resetFill('ex1')">Reset 🔄</button>
+      </div>
+      <div id="fill-ex1-score" style="margin-top:12px;font-size:13px;font-weight:700;font-family:'DM Mono',monospace;"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="sec-label">Exercise 4B — Prepositions &amp; Expressions</div>
+      <h2 class="sec-title">in · on · at · <span class="hl2">once · every</span></h2>
+      <div id="fill-ex2"></div>
+      <div class="btn-row">
+        <button class="btn btn-amber" onclick="checkFill('ex2')">Check ✓</button>
+        <button class="btn btn-ghost" onclick="resetFill('ex2')">Reset 🔄</button>
+      </div>
+      <div id="fill-ex2-score" style="margin-top:12px;font-size:13px;font-weight:700;font-family:'DM Mono',monospace;"></div>
+    </div>
+
+    <div class="btn-row" style="margin-top:20px;">
+      <button class="btn btn-ghost" onclick="showPage('p-match')">← Prepositions</button>
+      <button class="btn btn-green" onclick="showPage('p-quiz')">Final Quiz →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 6 · QUIZ
+══════════════════════════════════════ -->
+<div class="page" id="p-quiz">
+  <div class="hero">
+    <p class="hero-tag">Exercise 5 · Final Quiz</p>
+    <h1 class="hero-title">📝 Final <span class="hl">Quiz</span></h1>
+    <p class="hero-sub">20 questions covering adverbs of frequency, time expressions, prepositions, and sentence position. Good luck!</p>
+  </div>
+  <div class="container">
+    <div id="quiz-main">
+      <div class="qz-progress"><div class="qz-bar" id="qzBar" style="width:0%"></div></div>
+      <div id="qzContainer"></div>
+      <div class="btn-row" style="margin-top:18px;">
+        <button class="btn btn-ghost" id="qzBtnPrev" onclick="prevQz()" style="display:none">← Back</button>
+        <button class="btn btn-green" id="qzBtnNext" onclick="nextQz()" style="display:none">Next →</button>
+      </div>
+    </div>
+    <div id="quiz-score" style="display:none;">
+      <div class="score-screen">
+        <div class="score-ring">
+          <div class="score-num" id="finalScore">0</div>
+          <div class="score-den">/ 20</div>
+        </div>
+        <h2 class="score-title" id="scoreTitle"></h2>
+        <p class="score-msg"  id="scoreMsg"></p>
+        <div class="btn-row" style="justify-content:center;margin-top:20px;">
+          <button class="btn btn-ghost"  onclick="restartQz()">Try Again 🔄</button>
+          <button class="btn btn-green"  onclick="showPage('p-grammar')">Review Grammar 📖</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <b>Cesar Peña</b> · Bilingual Teacher · SENA — Análisis y Desarrollo de Sistemas de Información · 2026
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════
+
+// Frequency adverbs: [word, percentage, example]
+const freqAdverbs = [
+  { w:"never",        pct:0,   ex:"I never skip class."               },
+  { w:"rarely",       pct:10,  ex:"She rarely eats fast food."        },
+  { w:"seldom",       pct:20,  ex:"He seldom arrives late."           },
+  { w:"occasionally", pct:30,  ex:"We occasionally go to the cinema." },
+  { w:"sometimes",    pct:50,  ex:"I sometimes work late."            },
+  { w:"often",        pct:60,  ex:"They often study together."        },
+  { w:"frequently",   pct:70,  ex:"She frequently checks her email."  },
+  { w:"usually",      pct:80,  ex:"We usually have lunch at noon."    },
+  { w:"almost always",pct:90,  ex:"He almost always wakes up early."  },
+  { w:"always",       pct:100, ex:"I always brush my teeth."          },
+];
+
+// Scale exercise: 9 slots (excluding always/never which are fixed endpoints)
+const scaleItems = [
+  { w:"rarely",        pct:10,  label:"~10%"  },
+  { w:"seldom",        pct:20,  label:"~20%"  },
+  { w:"occasionally",  pct:30,  label:"~30%"  },
+  { w:"sometimes",     pct:50,  label:"~50%"  },
+  { w:"often",         pct:60,  label:"~60%"  },
+  { w:"frequently",    pct:70,  label:"~70%"  },
+  { w:"usually",       pct:80,  label:"~80%"  },
+  { w:"almost always", pct:90,  label:"~90%"  },
+  { w:"always",        pct:100, label:"100%"  },
+];
+
+// Sentence order exercise
+const orderData = {
+  ex1: [
+    { words:["I","always","have","breakfast","at","7","a.m.","."], adverb:"always",
+      correct:["I","always","have","breakfast","at","7","a.m.","."], fb:"✅ 'always' goes before the main verb 'have'." },
+    { words:["She","usually","wakes","up","at","6","a.m.","."], adverb:"usually",
+      correct:["She","usually","wakes","up","at","6","a.m.","."], fb:"✅ 'usually' goes before the main verb 'wakes'." },
+    { words:["They","never","miss","class","."], adverb:"never",
+      correct:["They","never","miss","class","."], fb:"✅ 'never' goes before the main verb 'miss'." },
+    { words:["We","often","write","code","in","the","afternoon","."], adverb:"often",
+      correct:["We","often","write","code","in","the","afternoon","."], fb:"✅ 'often' goes before the main verb 'write'." },
+    { words:["He","sometimes","goes","to","the","gym","."], adverb:"sometimes",
+      correct:["He","sometimes","goes","to","the","gym","."], fb:"✅ 'sometimes' goes before the main verb 'goes'." },
+    { words:["I","rarely","eat","fast","food","."], adverb:"rarely",
+      correct:["I","rarely","eat","fast","food","."], fb:"✅ 'rarely' goes before the main verb 'eat'." },
+  ],
+  ex2: [
+    { words:["She","is","always","on","time","."], adverb:"always",
+      correct:["She","is","always","on","time","."], fb:"✅ 'always' goes AFTER the verb 'is' (to be)." },
+    { words:["They","are","often","late","for","class","."], adverb:"often",
+      correct:["They","are","often","late","for","class","."], fb:"✅ 'often' goes AFTER the verb 'are' (to be)." },
+    { words:["I","am","never","bored","in","class","."], adverb:"never",
+      correct:["I","am","never","bored","in","class","."], fb:"✅ 'never' goes AFTER the verb 'am' (to be)." },
+    { words:["We","are","usually","tired","on","Mondays","."], adverb:"usually",
+      correct:["We","are","usually","tired","on","Mondays","."], fb:"✅ 'usually' goes AFTER the verb 'are' (to be)." },
+  ],
+};
+
+// Preposition match exercise
+// 54 items split into 3 rounds of 18 (6 in + 6 on + 6 at per round)
+const matchRounds = [
+  // ── ROUND 1 ──
+  [
+    { expr:"the morning",       prep:"in" },
+    { expr:"the afternoon",     prep:"in" },
+    { expr:"the evening",       prep:"in" },
+    { expr:"January",           prep:"in" },
+    { expr:"summer",            prep:"in" },
+    { expr:"2026",              prep:"in" },
+    { expr:"Monday",            prep:"on" },
+    { expr:"Friday night",      prep:"on" },
+    { expr:"weekdays",          prep:"on" },
+    { expr:"March 15th",        prep:"on" },
+    { expr:"Christmas Day",     prep:"on" },
+    { expr:"weekends(American)",prep:"on" },
+    { expr:"7 a.m.",            prep:"at" },
+    { expr:"noon",              prep:"at" },
+    { expr:"midnight",          prep:"at" },
+    { expr:"night",             prep:"at" },
+    { expr:"breakfast",         prep:"at" },
+    { expr:"lunchtime",         prep:"at" },
+  ],
+  // ── ROUND 2 ──
+  [
+    { expr:"winter",            prep:"in" },
+    { expr:"autumn",            prep:"in" },
+    { expr:"spring",            prep:"in" },
+    { expr:"the 1990s",         prep:"in" },
+    { expr:"the 21st century",  prep:"in" },
+    { expr:"March",             prep:"in" },
+    { expr:"Tuesday morning",   prep:"on" },
+    { expr:"New Year's Day",    prep:"on" },
+    { expr:"my birthday",       prep:"on" },
+    { expr:"Saturday evenings", prep:"on" },
+    { expr:"the weekend",       prep:"on" },
+    { expr:"a rainy day",       prep:"on" },
+    { expr:"the weekend (British)",prep:"at" },
+    { expr:"dinnertime",        prep:"at" },
+    { expr:"3:30 p.m.",         prep:"at" },
+    { expr:"the end of class",  prep:"at" },
+    { expr:"the moment",        prep:"at" },
+    { expr:"sunrise",           prep:"at" },
+  ],
+  // ── ROUND 3 ──
+  [
+    { expr:"the afternoon",     prep:"in" },
+    { expr:"September",         prep:"in" },
+    { expr:"the past",          prep:"in" },
+    { expr:"the near future",   prep:"in" },
+    { expr:"a few minutes",     prep:"in" },
+    { expr:"the Middle Ages",   prep:"in" },
+    { expr:"Sunday",            prep:"on" },
+    { expr:"Valentine's Day",   prep:"on" },
+    { expr:"the last day",      prep:"on" },
+    { expr:"Thursday afternoon",prep:"on" },
+    { expr:"a weekday",         prep:"on" },
+    { expr:"December 31st",     prep:"on" },
+    { expr:"half past six",     prep:"at" },
+    { expr:"the same time",     prep:"at" },
+    { expr:"the beginning",     prep:"at" },
+    { expr:"sunset",            prep:"at" },
+    { expr:"the end",           prep:"at" },
+    { expr:"Christmas (period)",prep:"at" },
+  ],
+];
+// Flat list for reference/score denominator
+const matchItems = matchRounds.flat();
+
+// Fill-in exercise data
+const fillData = {
+  ex1: [
+    { sentence:"I ___ check messages before breakfast — it's a bad habit!",
+      opts:["always","never","on","in"],  ans:0,
+      fb:"'always' = 100% of the time, fits the habit described." },
+    { sentence:"We ___ miss deadlines. Our projects are always delivered on time.",
+      opts:["often","sometimes","never","usually"], ans:2,
+      fb:"'never' = 0%. The sentence says they always deliver on time, so they never miss deadlines." },
+    { sentence:"She ___ arrives late to class — maybe once or twice a semester.",
+      opts:["always","usually","rarely","frequently"], ans:2,
+      fb:"'rarely' = about 10%. 'Once or twice a semester' is very infrequent." },
+    { sentence:"They ___ study together on Friday afternoons. It's their regular routine.",
+      opts:["never","usually","occasionally","seldom"], ans:1,
+      fb:"'usually' = about 80%. It's described as a regular routine." },
+    { sentence:"I ___ eat junk food. About once or twice a week.",
+      opts:["never","always","sometimes","seldom"], ans:2,
+      fb:"'sometimes' = about 50%. 'Once or twice a week' fits sometimes." },
+    { sentence:"He is ___ tired on Monday mornings after working all weekend.",
+      opts:["usually","in","on","at"], ans:0,
+      fb:"'usually' goes AFTER the verb 'is'. It fits because it's a regular pattern." },
+    { sentence:"Do you ___ exercise in the evenings?",
+      opts:["in","on","often","at"], ans:2,
+      fb:"'often' is an adverb of frequency that fits naturally here." },
+    { sentence:"I ___ forget to charge my phone. It happens every day!",
+      opts:["never","always","seldom","rarely"], ans:1,
+      fb:"'always' = 100%. 'It happens every day' confirms it's always." },
+  ],
+  ex2: [
+    { sentence:"I wake up ___ 6 a.m. every day.",
+      opts:["in","on","at","every"], ans:2,
+      fb:"Use 'at' with clock times: at 6 a.m., at noon, at midnight." },
+    { sentence:"She studies ___ the evening.",
+      opts:["at","on","in","every"], ans:2,
+      fb:"Use 'in' with parts of the day: in the morning, in the afternoon, in the evening." },
+    { sentence:"We have class ___ Mondays and Wednesdays.",
+      opts:["in","at","on","every"], ans:2,
+      fb:"Use 'on' with days of the week: on Monday, on Friday, on weekends." },
+    { sentence:"They go to the gym ___ week.",
+      opts:["in","on","at","every"], ans:3,
+      fb:"'every week' = a fixed frequency expression. It goes at the end of the sentence." },
+    { sentence:"I go to the gym ___ a week.",
+      opts:["twice","every","in","on"], ans:0,
+      fb:"'twice a week' is a frequency expression (2 times per week)." },
+    { sentence:"She was born ___ 2005.",
+      opts:["on","at","in","every"], ans:2,
+      fb:"Use 'in' with years: in 2005, in 1990." },
+    { sentence:"The meeting is ___ Friday morning.",
+      opts:["in","at","on","every"], ans:2,
+      fb:"Use 'on' with specific days: on Friday morning, on Monday." },
+    { sentence:"I check my code ___ night before going to bed.",
+      opts:["in","on","at","every"], ans:2,
+      fb:"'at night' is an exception — use 'at', not 'in'. (But 'in the evening' is correct.)" },
+    { sentence:"They release updates ___ month.",
+      opts:["every","once","at","on"], ans:0,
+      fb:"'every month' = once per month, regularly. 'every' + time period." },
+    { sentence:"I back up my files ___ a week.",
+      opts:["every","once","in","on"], ans:1,
+      fb:"'once a week' = one time per week. 'once/twice/three times + a + period'." },
+  ],
+};
+
+// Quiz questions
+const questions = [
+  { q:"Choose the sentence with the correct adverb position.",
+    sub:"",
+    opts:["I always have breakfast.","I have always breakfast.","Always I have breakfast.","I have breakfast always."],
+    ans:0, fb:"'always' goes before the main verb 'have'. 'I always have breakfast.' ✅" },
+  { q:"Which sentence uses the verb to be correctly with an adverb?",
+    sub:"",
+    opts:["She always is late.","She is always late.","Always she is late.","She is late always."],
+    ans:1, fb:"After the verb 'to be', the adverb comes AFTER: 'She is always late.' ✅" },
+  { q:"What percentage does 'usually' represent?",
+    sub:"",
+    opts:["About 50%","About 80%","About 30%","100%"],
+    ans:1, fb:"'usually' = approximately 80% — almost every time, but not quite always." },
+  { q:"Which adverb means the LEAST frequency?",
+    sub:"",
+    opts:["sometimes","occasionally","rarely","seldom"],
+    ans:2, fb:"'rarely' ≈ 10% — it means almost never. 'seldom' is similar but 'rarely' is generally considered the least frequent of these options." },
+  { q:"Complete: I go to the gym ___ Monday mornings.",
+    sub:"",
+    opts:["in","at","on","every"],
+    ans:2, fb:"Use 'on' with days of the week: on Monday, on Friday, on weekdays." },
+  { q:"Complete: She wakes up ___ 5:30 a.m.",
+    sub:"",
+    opts:["in","on","at","by"],
+    ans:2, fb:"Use 'at' with clock times: at 5:30 a.m., at noon, at midnight." },
+  { q:"Complete: We study better ___ the morning.",
+    sub:"",
+    opts:["at","on","in","by"],
+    ans:2, fb:"Use 'in' with parts of the day: in the morning, in the afternoon, in the evening." },
+  { q:"Complete: They release a new app ___ 2026.",
+    sub:"",
+    opts:["on","at","in","during"],
+    ans:2, fb:"Use 'in' with years: in 2026, in 2005, in the 1990s." },
+  { q:"What does 'twice a week' mean?",
+    sub:"",
+    opts:["Two times a month","Two times a week","Every two weeks","Once a week"],
+    ans:1, fb:"'twice' = two times. 'twice a week' = two times per week." },
+  { q:"Which sentence is WRONG?",
+    sub:"",
+    opts:["I usually wake up early.","She is often tired.","They eat always pizza.","He rarely arrives late."],
+    ans:2, fb:"❌ 'They eat always pizza.' — you cannot put 'always' between the verb and its object. → 'They always eat pizza.' ✅" },
+  { q:"Where does 'every day' go in a sentence?",
+    sub:"",
+    opts:["Before the subject","Between subject and verb","Before the main verb","At the end of the sentence"],
+    ans:3, fb:"Expressions like 'every day', 'twice a week', 'once a month' go at the END of the sentence." },
+  { q:"Choose the correct sentence.",
+    sub:"",
+    opts:["I twice a week go to the gym.","I go twice a week to the gym.","I go to the gym twice a week.","Twice a week I go to gym the."],
+    ans:2, fb:"'twice a week' goes at the END: 'I go to the gym twice a week.' ✅" },
+  { q:"Complete: The meeting is ___ Christmas Day.",
+    sub:"",
+    opts:["in","at","on","by"],
+    ans:2, fb:"Use 'on' with specific days and named days: on Christmas Day, on New Year's Eve." },
+  { q:"Complete: I study ___ night.",
+    sub:"",
+    opts:["in","on","at","every"],
+    ans:2, fb:"'at night' is fixed — 'at' is the exception. (But: in the morning / in the evening)" },
+  { q:"'Seldom' is closest in meaning to which adverb?",
+    sub:"",
+    opts:["often","usually","rarely","sometimes"],
+    ans:2, fb:"'seldom' and 'rarely' both mean very infrequently (around 10-20%)." },
+  { q:"Which time expression uses 'in'?",
+    sub:"",
+    opts:["on Monday","at noon","in summer","at 6 a.m."],
+    ans:2, fb:"'in summer' — use 'in' with seasons. Also: in January, in 2026, in the morning." },
+  { q:"Choose the correct question form.",
+    sub:"",
+    opts:["How often do you exercise?","How frequent you exercise?","How often you exercise?","How much often do you exercise?"],
+    ans:0, fb:"'How often do you…?' is the correct question form for asking about frequency." },
+  { q:"Complete: She ___ late — it's very unusual.",
+    sub:"Choose the best adverb of frequency.",
+    opts:["is always","is rarely","is usually","always is"],
+    ans:1, fb:"'rarely' = approximately 10%. The sentence says it's very unusual, so 'rarely' fits. Position: after 'is' (to be)." },
+  { q:"Complete: I ___ my projects ___ time.",
+    sub:"Choose subject + adverb + object in the right order.",
+    opts:["always finish on","finish always on","always on finish","finish on always"],
+    ans:0, fb:"'always' goes before the main verb 'finish': 'I always finish my projects on time.' ✅" },
+  { q:"Which sentence is CORRECT?",
+    sub:"",
+    opts:["On Sundays we usually hang out.","We on Sundays usually hang out.","We usually on Sundays hang out.","Usually we hang on Sundays out."],
+    ans:0, fb:"'On Sundays' can come first as a time frame, then subject + adverb + verb: 'On Sundays we usually hang out.' ✅" },
+];
+
+// ═══════════════════════════════════════════════
+// NAV
+// ═══════════════════════════════════════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map = {'p-grammar':0,'p-scale':1,'p-order':2,'p-match':3,'p-fill':4,'p-quiz':5};
+  document.querySelectorAll('.nav-tab')[map[id]].classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  if (id === 'p-scale')   initScale();
+  if (id === 'p-order')   initOrder();
+  if (id === 'p-match')   initMatch();
+  if (id === 'p-fill')    initFill();
+  if (id === 'p-quiz')    initQuiz();
+}
+
+// ═══════════════════════════════════════════════
+// GRAMMAR TABLE
+// ═══════════════════════════════════════════════
+function buildGrammarTable() {
+  const tb = document.getElementById('freq-table-body');
+  if (!tb) return;
+  const colors = ['#ff5252','#ff8a65','#ffa726','#ffd740','#ffee58','#d4e157','#66bb6a','#26a69a','#42a5f5','#00e676'];
+  tb.innerHTML = freqAdverbs.map((a,i) => `
+    <tr style="border-bottom:1px solid var(--border);">
+      <td style="padding:9px 10px;font-family:'DM Mono',monospace;font-weight:700;color:${colors[i]}">${a.w}</td>
+      <td style="padding:9px 10px;text-align:center;font-family:'DM Mono',monospace;color:var(--muted)">${a.pct}%</td>
+      <td style="padding:9px 10px;color:var(--light);font-style:italic">${a.ex}</td>
+    </tr>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════
+// SCALE EXERCISE
+// ═══════════════════════════════════════════════
+let scaleState = {};
+let scaleDragItem = null;
+let scaleClickSel = null;
+let scaleInitDone = false;
+
+function initScale() {
+  if (scaleInitDone) return;
+  scaleInitDone = true;
+  renderScale();
+}
+
+function renderScale() {
+  scaleState = {};
+  scaleClickSel = null;
+
+  // Slots
+  const slotsEl = document.getElementById('scale-slots');
+  slotsEl.innerHTML = scaleItems.map((item, i) => `
+    <div class="scale-slot" id="sslot-${i}"
+      ondragover="event.preventDefault();this.classList.add('drag-over')"
+      ondragleave="this.classList.remove('drag-over')"
+      ondrop="scaleDrop(event,${i})"
+      onclick="scaleSlotClick(${i})">
+      <div class="slot-pct">${item.label}</div>
+      <div class="slot-word" id="sslot-word-${i}">—</div>
+      <div class="slot-fb" id="sslot-fb-${i}"></div>
+    </div>
+  `).join('');
+
+  // Bank — shuffle
+  const shuffled = [...scaleItems].sort(() => Math.random() - .5);
+  const bankEl = document.getElementById('scale-bank');
+  bankEl.innerHTML = shuffled.map(item => `
+    <div class="scale-pill" id="spill-${item.w.replace(/ /g,'-')}"
+      draggable="true"
+      ondragstart="scaleDragStart(event,'${item.w}')"
+      ondragend="scaleDragEnd(event)"
+      onclick="scalePillClick(event,'${item.w}')">
+      ${item.w}
+    </div>
+  `).join('');
+  document.getElementById('scale-score').innerHTML = '';
+}
+
+function scaleDragStart(e, w) { scaleDragItem = w; e.currentTarget.classList.add('dragging'); }
+function scaleDragEnd(e)       { e.currentTarget.classList.remove('dragging'); scaleDragItem = null; }
+
+function scaleDrop(e, slotIdx) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  if (!scaleDragItem) return;
+  placeScaleItem(scaleDragItem, slotIdx);
+}
+
+function scalePillClick(e, w) {
+  e.stopPropagation();
+  const el = document.getElementById('spill-'+w.replace(/ /g,'-'));
+  if (el.classList.contains('placed')) return;
+  document.querySelectorAll('.scale-pill').forEach(p => p.classList.remove('selected'));
+  if (scaleClickSel === w) { scaleClickSel = null; return; }
+  scaleClickSel = w;
+  el.classList.add('selected');
+}
+
+function scaleSlotClick(slotIdx) {
+  if (!scaleClickSel) return;
+  placeScaleItem(scaleClickSel, slotIdx);
+  scaleClickSel = null;
+}
+
+function placeScaleItem(w, slotIdx) {
+  // Remove from previous slot if already placed
+  Object.keys(scaleState).forEach(k => {
+    if (scaleState[k] === w) {
+      delete scaleState[k];
+      document.getElementById('sslot-word-'+k).textContent = '—';
+      document.getElementById('sslot-'+k).classList.remove('filled','correct','wrong');
+      document.getElementById('sslot-fb-'+k).textContent = '';
+    }
+  });
+  // If slot already occupied, return the old word to bank
+  if (scaleState[slotIdx]) {
+    const old = scaleState[slotIdx];
+    const oldPill = document.getElementById('spill-'+old.replace(/ /g,'-'));
+    if (oldPill) oldPill.classList.remove('placed','selected');
+  }
+  scaleState[slotIdx] = w;
+  document.getElementById('sslot-word-'+slotIdx).textContent = w;
+  document.getElementById('sslot-'+slotIdx).classList.add('filled');
+  document.getElementById('sslot-fb-'+slotIdx).textContent = '';
+
+  const pill = document.getElementById('spill-'+w.replace(/ /g,'-'));
+  if (pill) { pill.classList.add('placed'); pill.classList.remove('selected'); }
+}
+
+function checkScale() {
+  let correct = 0;
+  scaleItems.forEach((item, i) => {
+    const placed = scaleState[i];
+    const slot = document.getElementById('sslot-'+i);
+    const fb   = document.getElementById('sslot-fb-'+i);
+    if (!placed) { slot.classList.remove('correct','wrong'); fb.textContent = ''; return; }
+    const ok = placed === item.w;
+    slot.classList.remove('correct','wrong');
+    slot.classList.add(ok ? 'correct' : 'wrong');
+    fb.textContent = ok ? '✅' : `✗ → ${item.w}`;
+    fb.style.color  = ok ? 'var(--green)' : 'var(--rose)';
+    if (ok) correct++;
+  });
+  const total = Object.keys(scaleState).length;
+  const pct = total ? Math.round(correct/scaleItems.length*100) : 0;
+  document.getElementById('scale-score').innerHTML =
+    `<span style="color:${pct>=70?'var(--green)':'var(--rose)'}">${correct}/${scaleItems.length} correct (${pct}%)</span>`;
+}
+
+function resetScale() { scaleInitDone = false; initScale(); document.getElementById('scale-score').innerHTML = ''; }
+
+// ═══════════════════════════════════════════════
+// SENTENCE ORDER
+// ═══════════════════════════════════════════════
+let orderState = { ex1:{}, ex2:{} };
+let orderDrag  = null;
+let orderSel   = null;
+let orderInitDone = false;
+
+function initOrder() {
+  if (orderInitDone) return;
+  orderInitDone = true;
+  renderOrder('ex1');
+  renderOrder('ex2');
+}
+
+function renderOrder(ex) {
+  orderState[ex] = {};
+  const container = document.getElementById('order-'+ex);
+  container.innerHTML = orderData[ex].map((item, qi) => {
+    const shuffled = [...item.words].sort(() => Math.random() - .5);
+    return `
+    <div class="order-card" id="ocard-${ex}-${qi}">
+      <div class="order-num">${ex === 'ex1' ? 'A' : 'B'}${qi+1}.</div>
+      <div class="word-drop" id="odrop-${ex}-${qi}"
+        ondragover="event.preventDefault();this.classList.add('drag-over')"
+        ondragleave="this.classList.remove('drag-over')"
+        ondrop="wordDrop(event,'${ex}',${qi})"
+        onclick="dropZoneClick('${ex}',${qi})">
+        <span style="color:var(--muted);font-size:12px;font-family:'DM Mono',monospace;align-self:center;">Drop here…</span>
+      </div>
+      <div class="word-bank" id="obank-${ex}-${qi}">
+        ${shuffled.map(w => `
+          <div class="word-token${w===item.adverb?' adverb':''}" id="otok-${ex}-${qi}-${encodeURIComponent(w)}"
+            draggable="true"
+            ondragstart="orderDragStart(event,'${ex}',${qi},'${w.replace(/'/g,"\\'")}')"
+            ondragend="orderDragEnd(event)"
+            onclick="tokenClick(event,'${ex}',${qi},'${w.replace(/'/g,"\\'")}')">
+            ${w}
+          </div>`).join('')}
+      </div>
+      <div class="order-fb" id="ofb-${ex}-${qi}"></div>
+    </div>`;
+  }).join('');
+}
+
+function orderDragStart(e, ex, qi, w) { orderDrag = {ex,qi,w}; e.currentTarget.classList.add('dragging'); }
+function orderDragEnd(e)               { e.currentTarget.classList.remove('dragging'); orderDrag = null; }
+
+function wordDrop(e, ex, qi) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  if (!orderDrag || orderDrag.ex !== ex || orderDrag.qi !== qi) return;
+  moveTokenToDrop(ex, qi, orderDrag.w);
+  orderDrag = null;
+}
+
+function dropZoneClick(ex, qi) {
+  if (!orderSel || orderSel.ex !== ex || orderSel.qi !== qi) return;
+  moveTokenToDrop(ex, qi, orderSel.w);
+  orderSel = null;
+  document.querySelectorAll('.word-token').forEach(t => t.style.outline = '');
+}
+
+function tokenClick(e, ex, qi, w) {
+  e.stopPropagation();
+  const tok = e.currentTarget;
+  // If in drop zone, return to bank
+  if (tok.closest('.word-drop')) {
+    returnToken(ex, qi, w); return;
+  }
+  // Select / deselect in bank
+  document.querySelectorAll('.word-token').forEach(t => t.style.outline = '');
+  if (orderSel && orderSel.w === w && orderSel.ex === ex && orderSel.qi === qi) {
+    orderSel = null; return;
+  }
+  orderSel = {ex, qi, w};
+  tok.style.outline = '2px solid var(--amber)';
+}
+
+function moveTokenToDrop(ex, qi, w) {
+  const bank = document.getElementById('obank-'+ex+'-'+qi);
+  const drop = document.getElementById('odrop-'+ex+'-'+qi);
+  const id   = 'otok-'+ex+'-'+qi+'-'+encodeURIComponent(w);
+  const tok  = document.getElementById(id);
+  if (!tok) return;
+  tok.style.outline = '';
+  // Remove placeholder text
+  drop.querySelectorAll('span').forEach(s => s.remove());
+  drop.appendChild(tok);
+  tok.classList.add('in-drop');
+  if (!orderState[ex][qi]) orderState[ex][qi] = [];
+  if (!orderState[ex][qi].includes(w)) orderState[ex][qi].push(w);
+}
+
+function returnToken(ex, qi, w) {
+  const bank = document.getElementById('obank-'+ex+'-'+qi);
+  const drop = document.getElementById('odrop-'+ex+'-'+qi);
+  const id   = 'otok-'+ex+'-'+qi+'-'+encodeURIComponent(w);
+  const tok  = document.getElementById(id);
+  if (!tok) return;
+  bank.appendChild(tok);
+  tok.classList.remove('in-drop');
+  if (orderState[ex][qi]) orderState[ex][qi] = orderState[ex][qi].filter(x => x !== w);
+  if (!drop.children.length) drop.innerHTML = '<span style="color:var(--muted);font-size:12px;font-family:\'DM Mono\',monospace;align-self:center;">Drop here…</span>';
+}
+
+function checkOrder(ex) {
+  const items = orderData[ex];
+  let correct = 0;
+  items.forEach((item, qi) => {
+    const drop = document.getElementById('odrop-'+ex+'-'+qi);
+    const placed = Array.from(drop.querySelectorAll('.word-token')).map(t => t.textContent.trim());
+    const fb = document.getElementById('ofb-'+ex+'-'+qi);
+    const ok = JSON.stringify(placed) === JSON.stringify(item.correct);
+    fb.textContent = ok ? item.fb : '❌ Not quite. Correct: ' + item.correct.join(' ');
+    fb.className = 'order-fb show ' + (ok ? 'ok' : 'bad');
+    if (ok) correct++;
+  });
+  document.getElementById('order-'+ex+'-score').innerHTML =
+    `<span style="color:${correct===items.length?'var(--green)':'var(--rose)'}">${correct}/${items.length} correct</span>`;
+}
+
+function resetOrder(ex) {
+  orderState[ex] = {};
+  orderInitDone = false;
+  initOrder();
+  document.getElementById('order-'+ex+'-score').innerHTML = '';
+}
+
+// ═══════════════════════════════════════════════
+// MATCH EXERCISE
+// ═══════════════════════════════════════════════
+let matchDragItem = null;
+let matchClickSel = null;
+let matchPlaced = {};
+let matchRoundScores = [];
+let matchCurrentRound = 0;  // ✅ AGREGADO: Variable global inicializada
+let matchInitDone = false;
+
+function initMatch() {
+  if (matchInitDone) return;
+  matchInitDone = true;
+  matchCurrentRound = 0;
+  matchRoundScores = [];
+  renderMatchRound();
+}
+
+function renderMatchRound() {
+  matchPlaced = {};
+  matchClickSel = null;
+  const r = matchCurrentRound;
+  const items = matchRounds[r];
+
+  // Update pips
+  for (let i = 0; i < 3; i++) {
+    const pip = document.getElementById('mround-pip-' + i);
+    pip.style.background = i < r ? 'var(--green2)' : i === r ? 'var(--green)' : 'var(--border)';
+    pip.style.opacity = i === r ? '1' : i < r ? '.7' : '.4';
+  }
+  document.getElementById('mround-label').textContent = `${r + 1} / 3`;
+  document.getElementById('match-bank-label').textContent = `Word Bank — Round ${r + 1} of 3`;
+
+  // Clear columns
+  ['in', 'on', 'at'].forEach(p => document.getElementById('mitems-' + p).innerHTML = '');
+
+  // Shuffle chips
+  const shuffled = [...items].sort(() => Math.random() - .5);
+  document.getElementById('match-bank').innerHTML = shuffled.map(item => {
+    const id = 'mchip-' + item.expr.replace(/[ ./\$\$]/g, '-');
+    return `<div class="match-chip" id="${id}"
+      draggable="true"
+      ondragstart="matchDragStart(event,'${item.expr}')"
+      ondragend="matchDragEnd(event)"
+      onclick="matchChipClick(event,'${item.expr}')">${item.expr}</div>`;
+  }).join('');
+
+  document.getElementById('match-score').innerHTML = '';
+  document.getElementById('match-next-btn').style.display = 'none';
+  updateMatchTotal();
+}
+
+function updateMatchTotal() {
+  const total = document.getElementById('match-total');
+  if (!matchRoundScores.length) { total.innerHTML = ''; return; }
+  const sum = matchRoundScores.reduce((a, b) => a + b, 0);
+  const denom = matchRoundScores.length * 18;
+  total.innerHTML = `Running total: <span style="color:var(--green)">${sum} / ${denom}</span> across ${matchRoundScores.length} round(s)`;
+}
+
+// ✅ CORREGIDO: Drag handlers
+function matchDragStart(e, expr) {
+  matchDragItem = expr;
+  e.currentTarget.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', expr); // ✅ AGREGADO para compatibilidad
+}
+
+function matchDragEnd(e) {
+  e.currentTarget.classList.remove('dragging');
+  matchDragItem = null;
+}
+
+// ✅ CORREGIDO: Función drop principal
+function matchDrop(e, prep) {
+  e.preventDefault();
+  e.stopPropagation(); // ✅ AGREGADO
+  e.currentTarget.classList.remove('drag-over');
+  
+  if (!matchDragItem) {
+    // Si no hay drag item, usar dataTransfer como fallback
+    const expr = e.dataTransfer.getData('text/plain') || matchDragItem;
+    if (expr) placeMatchChip(expr, prep);
+    return;
+  }
+  
+  placeMatchChip(matchDragItem, prep);
+  matchDragItem = null;
+}
+
+// ✅ CORREGIDO: Click handlers
+function matchChipClick(e, expr) {
+  e.stopPropagation();
+  const id = 'mchip-' + expr.replace(/[ ./\$\$]/g, '-');
+  const el = document.getElementById(id);
+  if (!el) return;
+  
+  if (el.closest('.match-col')) {
+    returnMatchChip(expr);
+    return;
+  }
+  
+  // Deseleccionar todos
+  document.querySelectorAll('.match-chip').forEach(c => c.style.outline = '');
+  
+  if (matchClickSel === expr) {
+    matchClickSel = null;
+    return;
+  }
+  
+  matchClickSel = expr;
+  el.style.outline = '2px solid var(--amber)';
+}
+
+function matchColClick(prep) {
+  if (!matchClickSel) return;
+  placeMatchChip(matchClickSel, prep);
+  matchClickSel = null;
+  document.querySelectorAll('.match-chip').forEach(c => c.style.outline = '');
+}
+
+// ✅ MEJORADO: Colocar chip
+function placeMatchChip(expr, prep) {
+  const id = 'mchip-' + expr.replace(/[ ./\$\$]/g, '-');
+  const chip = document.getElementById(id);
+  if (!chip) return;
+  
+  chip.style.outline = '';
+  const targetCol = document.getElementById('mitems-' + prep);
+  if (targetCol) {
+    targetCol.appendChild(chip);
+    matchPlaced[expr] = prep;
+  }
+}
+
+// ✅ MEJORADO: Retornar chip
+function returnMatchChip(expr) {
+  const id = 'mchip-' + expr.replace(/[ ./\$\$]/g, '-');
+  const chip = document.getElementById(id);
+  if (!chip) return;
+  
+  const bank = document.getElementById('match-bank');
+  if (bank) {
+    bank.appendChild(chip);
+    delete matchPlaced[expr];
+  }
+}
+
+function checkMatch() {
+  const items = matchRounds[matchCurrentRound];
+  let correct = 0, checked = 0;
+  
+  document.querySelectorAll('.match-chip').forEach(chip => {
+    const expr = chip.textContent.trim();
+    const item = items.find(i => i.expr === expr);
+    const col = chip.closest('.match-col');
+    
+    if (!col || !item) return;
+    
+    checked++;
+    const placedPrep = col.id.replace('mcol-', '');
+    const ok = placedPrep === item.prep;
+    
+    chip.classList.remove('correct', 'wrong');
+    chip.classList.add(ok ? 'correct' : 'wrong');
+    
+    if (ok) correct++;
+  });
+  
+  if (checked === 0) {
+    document.getElementById('match-score').innerHTML = '<span style="color:var(--muted)">⚠️ Place some expressions first!</span>';
+    return;
+  }
+  
+  const pct = Math.round(correct / items.length * 100);
+  document.getElementById('match-score').innerHTML =
+    `<span style="color:${pct >= 70 ? 'var(--green)' : 'var(--rose)'}">${correct}/${items.length} correct this round (${pct}%)</span>`;
+
+  // Show Next Round button
+  const nextBtn = document.getElementById('match-next-btn');
+  const nextInner = document.getElementById('match-next-inner');
+  
+  if (matchCurrentRound < 2) {
+    nextInner.textContent = `Next Round (${matchCurrentRound + 2}/3) →`;
+    nextBtn.style.display = 'block';
+  } else {
+    const allRoundScores = [...matchRoundScores, correct];
+    const grandTotal = allRoundScores.reduce((a, b) => a + b, 0);
+    nextInner.textContent = `🎉 All rounds complete! ${grandTotal}/54 total`;
+    nextInner.onclick = null;
+    nextInner.disabled = true;
+    nextBtn.style.display = 'block';
+    document.getElementById('match-total').innerHTML =
+      `<span style="color:var(--green)">🏁 Grand total: ${grandTotal} / 54 (${Math.round(grandTotal / 54 * 100)}%)</span>`;
+  }
+}
+
+function nextMatchRound() {
+  let correct = 0;
+  const items = matchRounds[matchCurrentRound];
+  document.querySelectorAll('.match-chip').forEach(chip => {
+    const expr = chip.textContent.trim();
+    const item = items.find(i => i.expr === expr);
+    const col = chip.closest('.match-col');
+    if (col && item && col.id.replace('mcol-', '') === item.prep) correct++;
+  });
+  matchRoundScores.push(correct);
+  matchCurrentRound++;
+  renderMatchRound();
+  updateMatchTotal();
+  document.getElementById('match-next-btn').style.display = 'none';
+}
+
+function resetMatchRound() {
+  renderMatchRound();
+}
+
+function resetMatchAll() {
+  matchCurrentRound = 0;
+  matchRoundScores = [];
+  renderMatchRound();
+  document.getElementById('match-total').innerHTML = '';
+}
+
+function resetMatch() { matchInitDone = false; initMatch(); }
+
+// ═══════════════════════════════════════════════
+// FILL IN
+// ═══════════════════════════════════════════════
+let fillAnswers  = { ex1: {}, ex2: {} };
+let fillAnswered = { ex1: {}, ex2: {} };
+let fillInitDone = false;
+
+function initFill() {
+  if (fillInitDone) return;
+  fillInitDone = true;
+  renderFill('ex1');
+  renderFill('ex2');
+}
+
+function renderFill(ex) {
+  fillAnswers[ex]  = {};
+  fillAnswered[ex] = {};
+  const container = document.getElementById('fill-'+ex);
+  container.innerHTML = fillData[ex].map((item, i) => `
+    <div class="fill-card" id="fcard-${ex}-${i}">
+      <div class="fill-num">${ex==='ex1'?'A':'B'}${i+1}.</div>
+      <div class="fill-sentence">${item.sentence.replace('___','<span style="color:var(--amber);font-family:\'DM Mono\',monospace">___</span>')}</div>
+      <div class="fill-opts">
+        ${item.opts.map((o,oi) => `
+          <button class="fill-opt" onclick="selFill('${ex}',${i},${oi})">${o}</button>
+        `).join('')}
+      </div>
+      <div class="fill-fb" id="ffb-${ex}-${i}"></div>
+    </div>
+  `).join('');
+}
+
+function selFill(ex, i, oi) {
+  if (fillAnswered[ex][i]) return;
+  fillAnswers[ex][i] = oi;
+  const card = document.getElementById('fcard-'+ex+'-'+i);
+  card.querySelectorAll('.fill-opt').forEach(b => b.classList.remove('selected'));
+  card.querySelectorAll('.fill-opt')[oi].classList.add('selected');
+}
+
+function checkFill(ex) {
+  let correct = 0;
+  fillData[ex].forEach((item, i) => {
+    const sel = fillAnswers[ex][i];
+    const fb  = document.getElementById('ffb-'+ex+'-'+i);
+    const card = document.getElementById('fcard-'+ex+'-'+i);
+    if (sel === undefined) { fb.textContent = '⚠️ Select an answer.'; fb.className='fill-fb bad show'; return; }
+    fillAnswered[ex][i] = true;
+    const ok = sel === item.ans;
+    if (ok) correct++;
+    card.querySelectorAll('.fill-opt').forEach((b,oi) => {
+      b.classList.add('locked');
+      if (oi === item.ans) b.classList.add('correct');
+      else if (oi === sel) b.classList.add('wrong');
+    });
+    fb.textContent = (ok ? '✅ ' : '❌ ') + item.fb;
+    fb.className = 'fill-fb show ' + (ok ? 'ok' : 'bad');
+  });
+  const answered = Object.keys(fillAnswered[ex]).length;
+  const pct = answered ? Math.round(correct/answered*100) : 0;
+  document.getElementById('fill-'+ex+'-score').innerHTML =
+    `<span style="color:${pct>=70?'var(--green)':'var(--rose)'}">${correct}/${answered} correct (${pct}%)</span>`;
+}
+
+function resetFill(ex) {
+  fillAnswers[ex]  = {};
+  fillAnswered[ex] = {};
+  renderFill(ex);
+  document.getElementById('fill-'+ex+'-score').innerHTML = '';
+}
+
+// ═══════════════════════════════════════════════
+// QUIZ
+// ═══════════════════════════════════════════════
+let qzCur = 0;
+let qzAnswers  = new Array(questions.length).fill(-1);
+let qzAnswered = new Array(questions.length).fill(false);
+let qzInitDone = false;
+
+function initQuiz() {
+  if (qzInitDone) return;
+  qzInitDone = true;
+  qzCur = 0;
+  qzAnswers  = new Array(questions.length).fill(-1);
+  qzAnswered = new Array(questions.length).fill(false);
+  document.getElementById('quiz-score').style.display = 'none';
+  document.getElementById('quiz-main').style.display  = 'block';
+  renderQz();
+}
+
+function renderQz() {
+  const q = questions[qzCur];
+  const L = ['A','B','C','D'];
+  document.getElementById('qzBar').style.width = ((qzCur/questions.length)*100)+'%';
+  document.getElementById('qzContainer').innerHTML = `
+    <div class="qz-card">
+      <div class="qz-meta">Question ${qzCur+1} of ${questions.length}</div>
+      <div class="qz-q">${q.q}</div>
+      ${q.sub ? `<div class="qz-sub">${q.sub}</div>` : ''}
+      <div class="qz-opts">
+        ${q.opts.map((o,oi) => `
+          <button class="qz-opt${qzAnswers[qzCur]===oi?' selected':''}${qzAnswered[qzCur]?(oi===q.ans?' correct':qzAnswers[qzCur]===oi?' wrong':''):''} ${qzAnswered[qzCur]?'locked':''}"
+            onclick="selQz(${oi})">
+            <span class="qz-letter">${L[oi]}</span>${o}
+          </button>
+        `).join('')}
+      </div>
+      <div class="qz-fb ${qzAnswered[qzCur]?'show':''} ${qzAnswered[qzCur]?(qzAnswers[qzCur]===q.ans?'ok':'bad'):''}" id="qzFb">
+        ${qzAnswered[qzCur] ? (qzAnswers[qzCur]===q.ans?'✅ ':'❌ ')+q.fb : ''}
+      </div>
+    </div>`;
+  document.getElementById('qzBtnPrev').style.display = qzCur > 0 ? 'inline-flex' : 'none';
+  document.getElementById('qzBtnNext').style.display = 'inline-flex';
+  document.getElementById('qzBtnNext').textContent   = qzCur === questions.length-1 ? 'See Results 🏁' : 'Next →';
+}
+
+function selQz(oi) {
+  if (qzAnswered[qzCur]) return;
+  qzAnswers[qzCur]  = oi;
+  qzAnswered[qzCur] = true;
+  renderQz();
+}
+
+function nextQz() {
+  if (!qzAnswered[qzCur]) {
+    const fb = document.getElementById('qzFb');
+    if (fb) { fb.textContent = '⚠️ Please select an answer first.'; fb.className = 'qz-fb bad show'; }
+    return;
+  }
+  if (qzCur === questions.length - 1) { showScore(); return; }
+  qzCur++;
+  renderQz();
+}
+
+function prevQz() { if (qzCur > 0) { qzCur--; renderQz(); } }
+
+function showScore() {
+  const correct = qzAnswers.filter((a,i) => a === questions[i].ans).length;
+  const pct = Math.round(correct/questions.length*100);
+  document.getElementById('finalScore').textContent = correct;
+  document.getElementById('qzBar').style.width = '100%';
+  const [title, msg] = pct>=90 ? ['Outstanding! 🌟','You have an excellent command of adverbs and time expressions!']
+                     : pct>=70 ? ['Great work! 💪','You understand most of the content. Review the sections you missed.']
+                     : pct>=50 ? ['Keep going! 📖','Go back to the grammar section and review the rules.']
+                     :           ["Let's review 🔄",'Don\'t worry — read the grammar notes and try again!'];
+  document.getElementById('scoreTitle').textContent = title;
+  document.getElementById('scoreMsg').textContent   = msg;
+  document.getElementById('quiz-main').style.display  = 'none';
+  document.getElementById('quiz-score').style.display = 'block';
+}
+
+function restartQz() {
+  qzInitDone = false;
+  initQuiz();
+}
+
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
+window.addEventListener('load', () => {
+  buildGrammarTable();
+});
+</script>
+</body>
+</html>
